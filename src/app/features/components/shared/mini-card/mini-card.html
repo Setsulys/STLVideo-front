@@ -1,0 +1,22 @@
+<div class="card-body">
+  <div class="card" style="width: 25rem;">
+
+    <img *ngIf="anime()?.main_picture"
+         [src]="anime().main_picture.medium"
+         alt="Affiche de l'anime"
+         class="mini-card__image text-align-center">
+
+    <div class="card-title">
+      <h5>{{ anime()?.title }}</h5>
+
+      <h6 *ngIf="anime()?.alternative_titles?.en">{{ anime().alternative_titles.en }}</h6>
+      <h6 *ngIf="!anime()?.alternative_titles?.en && anime()?.alternative_titles?.ja">{{ anime().alternative_titles.ja }}</h6>
+      <p>{{ anime()?.synopsis }}</p>
+      <div class="card">
+        <a href="#" class="btn btn-primary">
+          <p> Watch it</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

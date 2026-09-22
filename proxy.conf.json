@@ -1,0 +1,10 @@
+{
+  "/mal-api": {
+    "target": "https://api.myanimelist.net/v2",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/mal-api": ""
+    }
+  }
+}
