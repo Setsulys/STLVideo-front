@@ -1,0 +1,24 @@
+.mini-card{
+  border-radius:30px;
+  background: #f8fafc;
+  margin-bottom:5%;
+  margin-left:3%;
+  margin-right:3%;
+  }
+
+.mini-card__content{
+    margin-left:3%;
+    margin-right:3%;
+    text-align:justified;
+  }
+
+ .mini-card__image {
+   width: auto;
+   height: auto;
+   max-width:75%;
+   max-height:150px;
+   object-fit: cover;
+   display: block;
+   margin-top:10px;
+
+ }
