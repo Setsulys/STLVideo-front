@@ -13,6 +13,7 @@ export interface AnimeDetails{
   title:string;
   alt_title:string[];
   picture:string;
+  picture_small:string;
   synopsis:string;
   source:string;
   studios:string[];
@@ -45,6 +46,7 @@ export class ProductApiService {
             title: response.title,
             alt_title: response.alternative_titles,
             picture: response.main_picture?.large || '',
+            picture_small: response.main_picture?.medium || '',
             synopsis: response.synopsis || '',
             source: response.source || '',
             studios: response.studios ? response.studios.map((s: any) => s.name) : [],

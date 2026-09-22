@@ -1,22 +1,39 @@
-<div class="card-body">
-  <div class="card" style="width: 25rem;">
+<!-- Le conteneur principal prend 100% de la hauteur disponible dans le swiper-slide -->
+<div class="h-100 py-2">
 
-    <img *ngIf="anime()?.main_picture"
-         [src]="anime().main_picture.medium"
+  @if (anime()) {
+  <!-- La carte fait obligatoirement 100% de hauteur (h-100) et adopte une disposition en colonne Flexbox -->
+  <div class="card h-100 d-flex flex-column" style="width: 15rem;">
+
+    <!-- L'image garde une hauteur fixe identique partout -->
+    <img [src]="anime()?.picture_small"
          alt="Affiche de l'anime"
-         class="mini-card__image text-align-center">
+         class="card-img-top object-fit-contain"
+         style="height: 250px;">
 
-    <div class="card-title">
-      <h5>{{ anime()?.title }}</h5>
+    <!-- Le corps de la carte devient flexible et pousse le contenu si nécessaire -->
+    <div class="card-body d-flex flex-column justify-content-between text-center p-3">
 
-      <h6 *ngIf="anime()?.alternative_titles?.en">{{ anime().alternative_titles.en }}</h6>
-      <h6 *ngIf="!anime()?.alternative_titles?.en && anime()?.alternative_titles?.ja">{{ anime().alternative_titles.ja }}</h6>
-      <p>{{ anime()?.synopsis }}</p>
-      <div class="card">
-        <a href="#" class="btn btn-primary">
-          <p> Watch it</p>
-        </a>
+      <!-- Zone dédiée aux titres -->
+      <div>
+        <h5 class="card-title fw-bold">{{ anime()?.title }}</h5>
+
+        @if (anime()?.alt_title?.en) {
+        <p class="text-muted small mb-1">{{ anime().alt_title.en }}</p>
+        } @else{
+        <p class="text-muted small mb-1">{{ anime().title }}</p>
+        }
+
+        @if (anime()?.alt_title?.ja) {
+        <p class="text-muted small mb-0 text-truncate">{{ anime().alt_title.ja }}</p>
+        }@else{
+        <p class="text-muted small mb-1">{{ anime().title }}</p>
+        }
+
       </div>
+
     </div>
   </div>
+  }
+
 </div>

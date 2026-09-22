@@ -1,6 +1,12 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, OnInit, inject, signal, input, output, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductApiService } from './../../../products/services/product-api-service';
+
+interface Anime {
+  id: number;
+  title: string;
+  image: string;
+}
 
 @Component({
   selector: 'app-mini-card',
@@ -12,11 +18,10 @@ import { ProductApiService } from './../../../products/services/product-api-serv
 export class MiniCard implements OnInit{
   private productService = inject(ProductApiService);
     products = signal<any[]>([]);
-    isLoading = signal<boolean>(true);
     anime = signal<any | null>(null);
+    animeIdInput = input.required<number>();
 
   ngOnInit(): void {
-    const animeId = 30831;
-    this.productService.getAnimeDetailById(62164).subscribe(response => this.anime.set(response));
+    this.productService.getAnimeDetailById(this.animeIdInput()).subscribe(response => this.anime.set(response));
   }
 }

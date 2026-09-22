@@ -11,7 +11,6 @@ import { ProductApiService } from './../../products/services/product-api-service
 export class SerieDetailComponent  implements OnInit{
   private productService = inject(ProductApiService);
     products = signal<any[]>([]);
-    isLoading = signal<boolean>(true);
     anime = signal<any | null>(null);
 
   ngOnInit(): void {

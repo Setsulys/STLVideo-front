@@ -1,7 +1,7 @@
 
 <app-serie-detail-component></app-serie-detail-component>
 
-<!--<swiper-container
+<swiper-container
   slides-per-view="3"
   navigation="true"
   pagination="true"
@@ -9,11 +9,10 @@
   space-between="120"
   speed="600"
 >
-<swiper-slide>
-  <app-mini-card></app-mini-card>
-</swiper-slide>
-
-
+  @for (id of animeIds(); track id) {
+  <swiper-slide class="h-auto">
+    <app-mini-card [animeIdInput]="id"></app-mini-card>
+  </swiper-slide>
+  }
 </swiper-container>
 
--->
