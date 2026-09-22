@@ -67,6 +67,7 @@ export class ProductApiService {
   }
 
   getAnimeDetailById(id: string | number): Observable<AnimeDetails> {
+    const regex = /\[Written by MAL Rewrite\]/gi;
     return this.fetchAnimeData(id).pipe(
       map((response) => ({
         id: response.id,
@@ -74,7 +75,7 @@ export class ProductApiService {
         alt_title: response.alternative_titles,
         picture: response.main_picture?.large || '',
         picture_small: response.main_picture?.medium || '',
-        synopsis: response.synopsis || '',
+        synopsis: response.synopsis.replace(regex, "") || "",
         source: response.source || '',
         studios: response.studios ? response.studios.map((s: any) => s.name) : [],
         genres: response.genres ? response.genres.map((g: any) => g.name) : [],
