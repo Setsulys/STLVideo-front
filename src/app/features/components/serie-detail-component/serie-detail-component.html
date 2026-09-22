@@ -1,40 +1,58 @@
-@if (anime()) {
-<div class="content px-2 py-2 mx-2 my-2">
-  <div class="text-center">
-    <h1>{{ anime().title }}</h1>
-  </div>
-  <div class="row">
-    <div class="col text-center">
-
-      <img [src]="anime().picture"
-           alt="Affiche de l'anime"
-           class="mini-card__image text-align-center">
+ @if (anime()) {
+  <div class="content px-2 py-2 mx-2 my-2">
+    <div class="text-center">
+      <h1>{{ anime().title }}</h1>
     </div>
-    <div class="col">
-      <div class="card px-2 py-2 mx-2 my-2">
-        <h4 *ngIf="anime()?.alt_title?.en">{{ anime().alt_title.en }}</h4>
-        <h4 *ngIf="anime()?.alt_title?.ja">{{ anime().alt_title.ja }}</h4>
-        <br>
-        <p>{{ anime().synopsis }}</p>
-        <div class="card px-2 py-2 mx-2 my-2">
-          <p>Genres:
-            @for (genre of anime().genres; track genre; let last = $last) {
-            <span>{{ genre }}{{ !last ? ', ' : '' }}</span>
-            }
-          </p>
-          <p>Studios:
-            @for (studio of anime().studios; track studio; let last = $last) {
-            <span>{{ studio }}{{ !last ? ', ' : '' }}</span>
-            }
-          </p>
-          <p>Type: {{ anime().media_type }}</p>
-          <p>Source: {{ anime().source }}</p>
-          <a [href]="'https://myanimelist.net/anime/' + anime()?.id + '/'">
-            Myanimelist
-          </a>
+    <div class="row">
+      <div class="col text-center">
+
+        <img [src]="anime().picture"
+             alt="Affiche de l'anime"
+             class="mini-card__image text-align-center">
+      </div>
+      <div class="col">
+        <div class="card px-2 py-2 mx-2 my-2 bg-secondary-subtle">
+          <h4 *ngIf="anime()?.alt_title?.en">{{ anime().alt_title.en }}</h4>
+          <h4 *ngIf="anime()?.alt_title?.ja">{{ anime().alt_title.ja }}</h4>
+          <br>
+          <p>{{ anime().synopsis }}</p>
+          <div class="card px-2 py-2 mx-2 my-2 ">
+            <p><b>Studios: </b>
+              @for (studio of anime().studios; track studio; let last = $last) {
+              <span>{{ studio }}{{ !last ? ', ' : '' }}</span>
+              }
+            </p>
+            <p><b>Type: </b>{{ anime().media_type }}</p>
+            <p><b>Source: </b>{{ anime().source }}</p>
+            <a [href]="'https://myanimelist.net/anime/' + anime()?.id + '/'">
+              Myanimelist
+            </a>
+          </div>
+          <div class="card px-2 py-2 mx-2 my-2 ">
+            <b>Genres: </b>
+            <div class="conteneur">
+              @for (genre of anime().genres; track genre; let last = $last) {
+              <div class="card px-1">
+                <span>{{ genre }}</span>
+              </div>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-}
+  }
+ <div class="row mx-0 justify-content-center">
+   <div class="col-12 col-lg-8">
+  <div class="card px-2 py-2 mx-2 my-2 bg-secondary-subtle">
+    <div class="conteneur">
+      @for (item of [].constructor(season()); track $index) {
+      <div class="card text-center" style="width: 15rem;height: 7rem;">
+        Saison {{ $index + 1 }}
+      </div>
+      }
+    </div>
+  </div>
+   </div>
+ </div>

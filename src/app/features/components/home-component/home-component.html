@@ -1,18 +1,21 @@
-
-<app-serie-detail-component></app-serie-detail-component>
-
+<div class="container-fluid p-0 pt-5 mt-4 px-5">
 <swiper-container
-  slides-per-view="3"
+  slides-per-view="auto"
   navigation="true"
-  pagination="true"
+  pagination="false"
   loop="false"
-  space-between="120"
+  space-between="100"
   speed="600"
 >
   @for (id of animeIds(); track id) {
-  <swiper-slide class="h-auto">
-    <app-mini-card [animeIdInput]="id"></app-mini-card>
+  <swiper-slide class="h-auto" style="width: 250px !important;">
+    <app-mini-card
+      [animeIdInput]="id"
+      (click)="goToAnime(id)"
+      style="cursor: pointer;"
+    ></app-mini-card>
   </swiper-slide>
   }
 </swiper-container>
 
+</div>

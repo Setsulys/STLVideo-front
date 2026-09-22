@@ -22,6 +22,6 @@ export class MiniCard implements OnInit{
     animeIdInput = input.required<number>();
 
   ngOnInit(): void {
-    this.productService.getAnimeDetailById(this.animeIdInput()).subscribe(response => this.anime.set(response));
+    this.productService.getAnimeById(this.animeIdInput()).subscribe(response => this.anime.set(response));
   }
 }
